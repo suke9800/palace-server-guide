@@ -1,5 +1,4 @@
-const searchInput = document.querySelector("#guide-search");
-const sections = Array.from(document.querySelectorAll(".searchable"));
+const sections = Array.from(document.querySelectorAll(".section"));
 const navLinks = Array.from(document.querySelectorAll(".sidebar a"));
 const toast = document.querySelector("#toast");
 
@@ -22,16 +21,6 @@ document.addEventListener("click", (event) => {
   if (!copyTarget) return;
   copyText(copyTarget.dataset.copy);
 });
-
-function filterSections() {
-  const query = searchInput.value.trim().toLowerCase();
-  for (const section of sections) {
-    const hit = !query || section.textContent.toLowerCase().includes(query);
-    section.classList.toggle("hidden-by-search", !hit);
-  }
-}
-
-searchInput.addEventListener("input", filterSections);
 
 const observer = new IntersectionObserver(
   (entries) => {
