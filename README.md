@@ -1,6 +1,6 @@
 # BD 서버 가이드
 
-Public player guide for the Palace Minecraft server.
+Public player guide for the BD Minecraft server.
 
 Published with GitHub Pages:
 
