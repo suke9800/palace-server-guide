@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Palace Server Guide</title>
+    <meta name="description" content="Palace Minecraft 서버 플레이어용 사용 설명서">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#start" aria-label="Palace Server Guide home">
+        <span class="brand-mark">P</span>
+        <span>
+          <strong>Palace Server Guide</strong>
+          <small>플레이어용 서버 설명서</small>
+        </span>
+      </a>
+      <label class="search">
+        <span>검색</span>
+        <input id="guide-search" type="search" placeholder="예: 메이드, 펫, 토지세">
+      </label>
+    </header>
+
+    <div class="layout">
+      <nav class="sidebar" aria-label="Guide navigation">
+        <a href="#start">시작하기</a>
+        <a href="#economy">골드와 은행</a>
+        <a href="#shops">상점과 시세</a>
+        <a href="#land">부동산</a>
+        <a href="#maid">메이드</a>
+        <a href="#pets">펫</a>
+        <a href="#levels">레벨</a>
+        <a href="#recall">귀환서와 도핑</a>
+        <a href="#commands">명령어</a>
+        <a href="#bedrock">베드락</a>
+        <a href="#japanese">日本語</a>
+        <a href="#faq">문제 해결</a>
+      </nav>
+
+      <main>
+        <section id="start" class="hero section searchable">
+          <div class="hero-copy">
+            <p class="eyebrow">Minecraft Paper 1.21.11</p>
+            <h1>Palace 서버 사용 설명서</h1>
+            <p class="lead">
+              골드 경제, 상점, 부동산, 메이드, 펫, 레벨 시스템을 한 번에 확인하는 공개 플레이어 가이드입니다.
+            </p>
+            <div class="server-grid">
+              <div>
+                <span>Java 주소</span>
+                <button class="copy-value" data-copy="34.47.112.1">34.47.112.1</button>
+              </div>
+              <div>
+                <span>Java 포트</span>
+                <strong>25565</strong>
+              </div>
+              <div>
+                <span>Bedrock 주소</span>
+                <button class="copy-value" data-copy="34.47.112.1">34.47.112.1</button>
+              </div>
+              <div>
+                <span>Bedrock 포트</span>
+                <strong>19132</strong>
+              </div>
+            </div>
+            <div class="notice">
+              서버 접속 시 자바 리소스팩은 자동 다운로드됩니다. 돈, 부동산 증서, 메이드 증서, 펫 상자 같은 커스텀 아이템은 리소스팩을 허용해야 정상 표시됩니다.
+            </div>
+          </div>
+          <figure class="hero-art">
+            <img src="assets/guide-map.svg" alt="상점, 은행, 부동산, 메이드, 펫 시스템을 보여주는 서버 지도">
+          </figure>
+        </section>
+
+        <section id="economy" class="section searchable">
+          <div class="section-head">
+            <p class="eyebrow">Economy</p>
+            <h2>골드와 은행</h2>
+            <p>서버 화폐는 골드(G)입니다. 기본 소지금은 250G이며, 은행에서 실물 지폐로 교환할 수 있습니다.</p>
+          </div>
+          <div class="feature-grid three">
+            <article class="feature">
+              <h3>전자 골드</h3>
+              <p>상점 구매, 판매, 세금, 메이드 월급, 펫 상자 구매에 사용됩니다.</p>
+              <code>/money</code>
+            </article>
+            <article class="feature">
+              <h3>은행</h3>
+              <p>100G, 1,000G, 10,000G 지폐로 인출하거나 다시 입금할 수 있습니다.</p>
+              <code>/bank</code>
+            </article>
+            <article class="feature">
+              <h3>소지금 표시</h3>
+              <p>인벤토리를 열면 잠깐 보유 골드가 표시됩니다. 숫자는 보기 쉽게 정리되어 표시됩니다.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="shops" class="section searchable">
+          <div class="section-head">
+            <p class="eyebrow">Markets</p>
+            <h2>상점과 시세 변동</h2>
+            <p>NPC를 클릭해서 상점을 엽니다. 일반 플레이어는 직접 상점 소환 명령어를 쓰지 않습니다.</p>
+          </div>
+          <div class="shop-list">
+            <article class="shop-item">
+              <span class="shop-badge build">건축</span>
+              <h3>건축 상점</h3>
+              <p>블록, 장식, 작업용 아이템을 거래합니다. 건축 상점 구매가는 낮춰져 있고 판매가는 별도 기준을 따릅니다.</p>
+            </article>
+            <article class="shop-item">
+              <span class="shop-badge mine">광물</span>
+              <h3>광물 상점</h3>
+              <p>광석과 광물류를 거래합니다. 판매 가격은 마크 시간 7일마다 0.8배에서 1.2배 사이로 변동됩니다.</p>
+            </article>
+            <article class="shop-item">
+              <span class="shop-badge farm">농산물</span>
+              <h3>농산물 상점</h3>
+              <p>작물과 음식류를 거래합니다. 판매 가격은 마크 시간 7일마다 0.5배에서 1.5배 사이로 변동됩니다.</p>
+            </article>
+            <article class="shop-item">
+              <span class="shop-badge loot">전리품</span>
+              <h3>전리품 상점</h3>
+              <p>몹 전리품과 희귀 드롭을 거래합니다. 판매 가격은 0.5배에서 2배까지 변동되며 높은 가격대는 더 낮은 확률로 등장합니다.</p>
+            </article>
+            <article class="shop-item">
+              <span class="shop-badge magic">마법</span>
+              <h3>마법 상점</h3>
+              <p>경험치 병, 물약 재료, 일부 마법 관련 아이템을 거래합니다. 가격은 마크 시간 7일마다 변동됩니다.</p>
+            </article>
+          </div>
+          <div class="notice">
+            상점에서 거래할 때 구매, 판매, 일괄 판매 기록은 서버 콘솔에 남습니다.
+          </div>
+        </section>
+
+        <section id="land" class="section searchable">
+          <div class="section-head">
+            <p class="eyebrow">Land</p>
+            <h2>부동산</h2>
+            <p>부동산 증서를 사용하면 현재 청크를 내 땅으로 등록합니다. 내 땅에서는 다른 플레이어의 설치와 파괴가 막히고, 상자는 보호됩니다.</p>
+          </div>
+          <div class="data-table">
+            <div class="row head">
+              <span>항목</span>
+              <span>내용</span>
+            </div>
+            <div class="row">
+              <span>첫 토지</span>
+              <span>첫 청크 구매 가격은 10,000G입니다.</span>
+            </div>
+            <div class="row">
+              <span>추가 구매</span>
+              <span>구매할 때마다 다음 증서 가격이 10,000G씩 올라갑니다.</span>
+            </div>
+            <div class="row">
+              <span>토지세</span>
+              <span>1개는 무료, 2개부터 초과 토지당 마크 시간 7일마다 50G입니다.</span>
+            </div>
+            <div class="row">
+              <span>소유권 해제</span>
+              <span>확인창을 거치며 500G 수수료가 필요합니다. 해제하면 부동산 증서를 돌려받습니다.</span>
+            </div>
+            <div class="row">
+              <span>권한 부여</span>
+              <span>믿을 수 있는 플레이어에게 토지 권한을 줄 수 있습니다.</span>
+            </div>
+          </div>
+          <div class="command-strip">
+            <code>/land info</code>
+            <code>/land list</code>
+            <code>/land claim</code>
+            <code>/land unclaim</code>
+            <code>/land trust &lt;닉네임&gt;</code>
+            <code>/land untrust &lt;닉네임&gt;</code>
+            <code>/land map</code>
+          </div>
+        </section>
+
+        <section id="maid" class="section searchable">
+          <div class="section-head">
+            <p class="eyebrow">Maid</p>
+            <h2>메이드</h2>
+            <p>메이드는 내 땅에 설치해 농사, 아이템 줍기, 동물 먹이주기를 돕는 보조 NPC입니다.</p>
+          </div>
+          <div class="feature-grid two">
+            <article class="feature">
+              <h3>고용</h3>
+              <p>부동산 관리인에게 메이드 증서를 구매한 뒤, 내 땅에서 땅을 우클릭하면 해당 메이드가 소환됩니다. 메이드는 한 명만 보유할 수 있으며 해고 후 다시 고용할 수 있습니다.</p>
+              <strong>가격 20,000G</strong>
+            </article>
+            <article class="feature">
+              <h3>월급</h3>
+              <p>마크 시간 7일마다 200G가 지출됩니다. 잔액이 부족하면 보유 골드가 마이너스가 될 수 있습니다.</p>
+              <strong>7일마다 200G</strong>
+            </article>
+            <article class="feature">
+              <h3>농사</h3>
+              <p>현실 시간 2시간마다 연결된 내 소유 토지 전체에서 성숙한 작물을 전부 수확합니다. 밀, 당근, 감자, 비트, 네더 사마귀, 호박, 수박을 처리합니다.</p>
+              <code>/maid chest</code>
+            </article>
+            <article class="feature">
+              <h3>상자 지정</h3>
+              <p>상자를 바라보고 명령어를 사용하면 보관 상자가 지정됩니다. 지정 직후에도 한 번 작업을 확인합니다.</p>
+              <code>/maid info</code>
+            </article>
+          </div>
+          <div class="notice">
+            메이드 작업 범위는 메이드가 설치된 토지와 상하좌우로 붙어 있는 같은 소유자의 토지입니다. 떨어져 있는 다른 내 땅에는 적용되지 않습니다.
+          </div>
+        </section>
+
+        <section id="pets" class="section searchable">
+          <div class="section-head">
+            <p class="eyebrow">Pets</p>
+            <h2>펫</h2>
+            <p>로미에게 펫 상자를 구매하면 20% 확률로 아기 펫을 얻습니다. 펫은 주인을 따라다니며 보관함과 호감도 시스템을 가집니다.</p>
+          </div>
+          <div class="feature-grid three">
+            <article class="feature">
+              <h3>펫 상자</h3>
+              <p>가격은 8,000G입니다. 펫이 나오지 않으면 일반 보상이 지급됩니다.</p>
+              <strong>펫 확률 20%</strong>
+            </article>
+            <article class="feature">
+              <h3>따라오기</h3>
+              <p>평소에는 자연스럽게 따라오고, 20m 이상 멀어지면 가까운 위치로 이동합니다.</p>
+              <code>/pet hide</code>
+            </article>
+            <article class="feature">
+              <h3>보관함</h3>
+              <p>펫 호감도와 보유 펫 총합 레벨에 따라 공용 주머니 슬롯이 늘어납니다.</p>
+              <code>/pet storage</code>
+            </article>
+          </div>
+          <div class="data-table compact">
+            <div class="row head">
+              <span>일반 보상</span>
+              <span>수량</span>
+            </div>
+            <div class="row"><span>황금 사과</span><span>1-3개</span></div>
+            <div class="row"><span>스테이크</span><span>6-7개</span></div>
+            <div class="row"><span>금 주괴</span><span>5-8개</span></div>
+            <div class="row"><span>뼈</span><span>10-24개</span></div>
+            <div class="row"><span>경험치 병</span><span>4-7개</span></div>
+            <div class="row"><span>에메랄드</span><span>4-8개</span></div>
+            <div class="row"><span>철 주괴</span><span>10-12개</span></div>
+            <div class="row"><span>다이아몬드</span><span>4-6개</span></div>
+            <div class="row"><span>펫 호감도 물약</span><span>1개</span></div>
+          </div>
+        </section>
+
+        <section id="levels" class="section searchable">
+          <div class="section-head">
+            <p class="eyebrow">Levels</p>
+            <h2>전투, 생활, 채굴 레벨</h2>
+            <p>서버 활동으로 별도 스킬 경험치를 얻고, 레벨이 오르면 보너스가 적용됩니다.</p>
+          </div>
+          <div class="feature-grid three">
+            <article class="feature">
+              <h3>전투 레벨</h3>
+              <p>몬스터 처치로 경험치를 얻습니다. 레벨 10마다 최대 체력, 5마다 공격력과 방어력, 20마다 이동속도 보너스가 붙습니다.</p>
+              <code>/combatlevel</code>
+            </article>
+            <article class="feature">
+              <h3>생활 레벨</h3>
+              <p>작물 수확, 동물 먹이주기, 낚시로 경험치를 얻습니다. 낚시는 5레벨마다 두 배 보상 확률이 5%씩 오릅니다.</p>
+              <code>/lifelevel</code>
+            </article>
+            <article class="feature">
+              <h3>채굴 레벨</h3>
+              <p>광석 채굴로 경험치를 얻습니다. 5레벨마다 채굴 속도가 조금 오르고, 10레벨마다 추가 광물 확률이 증가합니다.</p>
+              <code>/mininglevel</code>
+            </article>
+          </div>
+        </section>
+
+        <section id="recall" class="section searchable">
+          <div class="section-head">
+            <p class="eyebrow">Consumables</p>
+            <h2>귀환서와 도핑 물약</h2>
+            <p>로미는 펫 상자와 귀환서를 판매합니다. 도핑 물약은 일정 기간 성장 효율을 올립니다.</p>
+          </div>
+          <div class="feature-grid two">
+            <article class="feature">
+              <h3>귀환서</h3>
+              <p>사용하면 서버 스폰 위치로 이동합니다. 가격은 1,000G입니다.</p>
+              <strong>1,000G</strong>
+            </article>
+            <article class="feature">
+              <h3>경험치 도핑</h3>
+              <p>전투, 생활, 채굴 경험치 획득량을 마크 시간 3일 동안 50% 올립니다.</p>
+              <strong>각 1,200G</strong>
+            </article>
+            <article class="feature">
+              <h3>펫 호감도 도핑</h3>
+              <p>마크 시간 3일 동안 자동 호감도와 쓰다듬기 호감도 획득량이 두 배가 됩니다.</p>
+              <strong>2,000G</strong>
+            </article>
+            <article class="feature">
+              <h3>쓰다듬기</h3>
+              <p>펫을 우클릭하면 보관함이 열리고, 하루에 한 번 호감도도 같이 오릅니다.</p>
+              <code>/pet storage</code>
+            </article>
+          </div>
+        </section>
+
+        <section id="commands" class="section searchable">
+          <div class="section-head">
+            <p class="eyebrow">Commands</p>
+            <h2>일반 플레이어 명령어</h2>
+            <p>서버에서 플레이어가 자주 쓰는 명령어만 정리했습니다.</p>
+          </div>
+          <div class="command-list">
+            <button data-copy="/palacehelp"><code>/palacehelp</code><span>서버 도움말 보기</span></button>
+            <button data-copy="/language ko"><code>/language ko</code><span>플러그인 표시 언어를 한국어로 변경</span></button>
+            <button data-copy="/language ja"><code>/language ja</code><span>플러그인 표시 언어를 일본어로 변경</span></button>
+            <button data-copy="/money"><code>/money</code><span>내 골드 확인</span></button>
+            <button data-copy="/money pay"><code>/money pay &lt;닉네임&gt; &lt;금액&gt;</code><span>다른 플레이어에게 송금</span></button>
+            <button data-copy="/bank"><code>/bank</code><span>은행 열기</span></button>
+            <button data-copy="/land info"><code>/land info</code><span>현재 위치의 토지 정보 확인</span></button>
+            <button data-copy="/land list"><code>/land list</code><span>내 토지 목록 확인</span></button>
+            <button data-copy="/land claim"><code>/land claim</code><span>부동산 증서로 현재 청크 등록</span></button>
+            <button data-copy="/land unclaim"><code>/land unclaim</code><span>토지 소유권 해제</span></button>
+            <button data-copy="/land trust"><code>/land trust &lt;닉네임&gt;</code><span>내 땅 권한 부여</span></button>
+            <button data-copy="/land untrust"><code>/land untrust &lt;닉네임&gt;</code><span>내 땅 권한 회수</span></button>
+            <button data-copy="/maid chest"><code>/maid chest</code><span>메이드 보관 상자 지정</span></button>
+            <button data-copy="/maid info"><code>/maid info</code><span>메이드 상태 확인</span></button>
+            <button data-copy="/maid toggle crops"><code>/maid toggle crops</code><span>작물 수확 켜기/끄기</span></button>
+            <button data-copy="/maid remove"><code>/maid remove</code><span>메이드 해고 확인창 열기</span></button>
+            <button data-copy="/pet storage"><code>/pet storage</code><span>펫 보관함 열기</span></button>
+            <button data-copy="/pet hide"><code>/pet hide</code><span>펫 숨기기</span></button>
+            <button data-copy="/pet show"><code>/pet show</code><span>펫 다시 보이기</span></button>
+            <button data-copy="/combatlevel"><code>/combatlevel</code><span>전투 레벨 확인</span></button>
+            <button data-copy="/lifelevel"><code>/lifelevel</code><span>생활 레벨 확인</span></button>
+            <button data-copy="/mininglevel"><code>/mininglevel</code><span>채굴 레벨 확인</span></button>
+          </div>
+        </section>
+
+        <section id="bedrock" class="section searchable">
+          <div class="section-head">
+            <p class="eyebrow">Crossplay</p>
+            <h2>베드락 접속</h2>
+            <p>서버는 Geyser와 Floodgate를 사용해 베드락 접속을 지원합니다.</p>
+          </div>
+          <div class="data-table">
+            <div class="row head"><span>항목</span><span>값</span></div>
+            <div class="row"><span>주소</span><span>34.47.112.1</span></div>
+            <div class="row"><span>포트</span><span>19132</span></div>
+            <div class="row"><span>리소스팩</span><span>접속 시 자동으로 내려받습니다.</span></div>
+            <div class="row"><span>채팅 문제</span><span>모바일에서 채팅 입력이 안 되면 서버 설정과 베드락 클라이언트 버전을 먼저 확인합니다.</span></div>
+          </div>
+        </section>
+
+        <section id="japanese" class="section searchable">
+          <div class="section-head">
+            <p class="eyebrow">日本語 Quick Guide</p>
+            <h2>日本語プレイヤー向け</h2>
+            <p>サーバー内の表示は <code>/language ja</code> で日本語に切り替えられます。</p>
+          </div>
+          <div class="feature-grid two">
+            <article class="feature">
+              <h3>接続</h3>
+              <p>Java: 34.47.112.1 / Bedrock: 34.47.112.1:19132</p>
+            </article>
+            <article class="feature">
+              <h3>よく使うコマンド</h3>
+              <p><code>/bank</code>, <code>/money</code>, <code>/land info</code>, <code>/pet storage</code>, <code>/maid info</code></p>
+            </article>
+            <article class="feature">
+              <h3>土地</h3>
+              <p>土地証書を使うとチャンクを所有できます。2個目から7 Minecraft日ごとに税金がかかります。</p>
+            </article>
+            <article class="feature">
+              <h3>メイドとペット</h3>
+              <p>メイドは農作業を手伝い、ペットはプレイヤーについてきて保管スロットを持ちます。</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="faq" class="section searchable">
+          <div class="section-head">
+            <p class="eyebrow">Troubleshooting</p>
+            <h2>자주 생기는 문제</h2>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>커스텀 아이템이 종이, 금 조각, 스폰 알처럼 보여요.</summary>
+              <p>리소스팩이 적용되지 않은 상태입니다. 서버 접속 시 리소스팩 다운로드를 허용하고, 이미 접속 중이면 재접속하세요.</p>
+            </details>
+            <details>
+              <summary>메이드가 작물을 안 캐요.</summary>
+              <p>보관 상자가 지정되어 있는지, 작물 수확 토글이 켜져 있는지, 완전히 자란 작물인지, 메이드 땅과 붙어 있는 내 토지인지 확인하세요.</p>
+            </details>
+            <details>
+              <summary>메이드가 24개만 캐던 문제는 어떻게 됐나요?</summary>
+              <p>현재 설정은 작물 수확 제한 0으로, 0은 무제한입니다. 현실 시간 2시간마다 연결된 내 토지의 성숙 작물을 전부 처리합니다.</p>
+            </details>
+            <details>
+              <summary>다른 사람이 내 땅에서 상자를 열 수 있나요?</summary>
+              <p>일반 플레이어 토지에서는 소유자와 권한을 받은 사람만 상자를 사용할 수 있습니다. 국가 토지는 공용 시설로 쓰기 위해 일부 상호작용이 열려 있습니다.</p>
+            </details>
+            <details>
+              <summary>리소스팩은 친구도 자동으로 받나요?</summary>
+              <p>자바는 서버 리소스팩 설정으로 자동 다운로드됩니다. 베드락은 Geyser 리소스팩을 통해 접속 시 내려받습니다.</p>
+            </details>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
